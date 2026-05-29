@@ -4,7 +4,7 @@ import { getAllCategories } from "./actions";
 import { TCategory } from "./types";
 import Image from "next/image";
 
-type Props = {};
+type Props = object;
 
 export function ContentCategory({ data }: { data: TCategory }) {
   return (

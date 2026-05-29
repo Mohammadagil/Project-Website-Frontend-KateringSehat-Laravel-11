@@ -51,6 +51,7 @@ async function Testimonials() {
   return <WrapperTestimonials data={data} />;
 }
 
+export default Testimonials;
 
 // 1 EXPORT FUNCTION DAN 1 ASYNC FUNCTION
 
@@ -92,4 +93,4 @@ async function Testimonials() {
 //   return <WrapperTestimonials data={data} />;
 // }
 
-export default Testimonials;
+

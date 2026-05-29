@@ -9,7 +9,7 @@ import Receipt from "@/assets/images/receipt.svg";
 import Promo from "@/assets/images/promo.svg";
 import Support247 from "@/assets/images/support247.svg";
 
-type Props = {};
+type Props = object;
 
 function BottomBar({}: Props) {
   const pathname = usePathname();
