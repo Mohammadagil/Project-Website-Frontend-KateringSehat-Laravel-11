@@ -9,7 +9,6 @@ import { OpenModal } from "@/components/Modal";
 
 import People from "@/assets/images/people.svg";
 
-import "@/libs/thousands";
 import { getFilteredPackagesByCityAndCategory } from "@/components/Packages/actions";
 import { TPackage } from "@/components/Packages/types";
 import { Metadata, ResolvingMetadata } from "next";

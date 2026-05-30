@@ -64,7 +64,7 @@ export function ContentNewest({ data, withTierDetailsQuantity }: { data: TPackag
       {data.map((item) => {
         const lowestTier = item.tiers.length > 0 ? item.tiers.reduce((min, current) => (current.price < min.price ? current : min)) : null;
 
-        const highestTier = item.tiers.length > 0 ? item.tiers.reduce((max, current) => (current.price < max.price ? current : max)) : null;
+        const highestTier = item.tiers.length > 0 ? item.tiers.reduce((max, current) => (current.price > max.price ? current : max)) : null;
 
         return (
           <div key={item.id} className="flex gap-x-3 relative">

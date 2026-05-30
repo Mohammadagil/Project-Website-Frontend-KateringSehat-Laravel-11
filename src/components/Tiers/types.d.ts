@@ -14,5 +14,6 @@ export type TTier = {
   quantity: number;
   duration: number;
   photo: string;
+  tagline: string;
   benefits: TBenefit[];
 };
