@@ -1,5 +1,6 @@
 import ModalFilterCategories from "@/components/Categories/ModalFilterCategories";
-import { RouterBack, PreventScrolling , TModalPosRegistered, TModalRegistered } from "@/components/Modal";
+import { RouterBack, PreventScrolling, TModalPosRegistered, TModalRegistered } from "@/components/Modal";
+import ModalDetailTier from "@/components/Tiers/ModalDetailTier";
 import React from "react";
 
 type Request = {
@@ -22,10 +23,11 @@ function page({ searchParams }: Request) {
     return (
       <>
         <div className={["fixed inset-0 z-50 bg-color4/80 flex justify-center", modalPosition].join(" ")}>
-          <div className={modalWrapper}>{/* render semua konten disini, contoh capture if(modal ==== "apa") {maka render disini} */}
-          {
-            searchParams.modal === "filter-category" && <ModalFilterCategories categorySlug={searchParams.categorySlug} />
-          }
+          <div className={modalWrapper}>
+            {/* render semua konten disini, contoh capture if(modal ==== "apa") {maka render disini} */}
+            {searchParams.modal === "filter-category" && <ModalFilterCategories categorySlug={searchParams.categorySlug} />}
+
+            {searchParams.modal === "tier" && <ModalDetailTier packageSlug={searchParams.packageSlug} tierId={searchParams.tierId} />}
           </div>
 
           <RouterBack />

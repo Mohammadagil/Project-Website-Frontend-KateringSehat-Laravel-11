@@ -1,5 +1,4 @@
 import React from "react";
-import Composerheader from "../ComposerHeader";
 import Image from "next/image";
 import { TPackageDetails } from "@/components/Packages/types";
 import { getPackageDetails } from "@/components/Packages/actions";
@@ -58,7 +57,7 @@ async function PackageTiersPage({ params }: Request) {
         <h2 className="font-semibold px-4 mb-3">Choose Your Package</h2>
         <div className="flex flex-col gap-y-4 px-4">
           {cateringPackage.data.tiers.map((tier) => {
-            return <ContentTier data={tier} key={tier.id} packageSlug={params.packageSlug} />;
+            return <ContentTier data={tier} key={tier.id} packageSlug={params.packageSlug} isPriceShown/>;
           })}
         </div>
       </section>
