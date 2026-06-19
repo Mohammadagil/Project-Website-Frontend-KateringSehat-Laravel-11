@@ -15,7 +15,7 @@ async function ModalDetailTier({ packageSlug, tierId }: Props) {
   if(!currentTier) return "Tier not found";
 
   return (
-    <ContentTier data={currentTier} packageSlug={packageSlug} />
+    <ContentTier data={currentTier} packageSlug={packageSlug} ctaIsBack/>
   );
 }
 

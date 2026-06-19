@@ -7,6 +7,7 @@ import Notes from "@/assets/images/notes.svg";
 import People from "@/assets/images/people.svg";
 import ComposerHeader from "./ComposerHeader";
 import { ContentTier } from "@/components/Tiers";
+import Link from "next/link";
 
 type Request = {
   params: {
@@ -33,7 +34,7 @@ async function PackageTiersPage({ params }: Request) {
             <Image fill className="w-full h-full object-cover object-center" src={`${process.env.HOST_API}/${cateringPackage.data.thumbnail}`} alt={cateringPackage.data.name} sizes="(max-width:768px) 100vw" />
           </figure>
           <span className="flex flex-col gap-y-3">
-            <span className="font-semibold">Asian Spicy Guandong</span>
+            <span className="font-semibold">{cateringPackage.data.name}</span>
             <span className="flex gap-x-1">
               <span className="text-color2">
                 <Notes />
@@ -57,7 +58,19 @@ async function PackageTiersPage({ params }: Request) {
         <h2 className="font-semibold px-4 mb-3">Choose Your Package</h2>
         <div className="flex flex-col gap-y-4 px-4">
           {cateringPackage.data.tiers.map((tier) => {
-            return <ContentTier data={tier} key={tier.id} packageSlug={params.packageSlug} isPriceShown/>;
+            return (
+              <ContentTier
+                data={tier}
+                key={tier.id}
+                packageSlug={params.packageSlug}
+                isPriceShown
+                cta={
+                  <Link href={`/packages/${params.packageSlug}/informations?tier=${tier.id}`} className="flex py-3 border border-gray1 rounded-full font-semibold justify-center hover:bg-color1 hover:text-white hover:border-transparent">
+                    Choose Package
+                  </Link>
+                }
+              />
+            );
           })}
         </div>
       </section>

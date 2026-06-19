@@ -20,7 +20,7 @@ type Request = {
 
 export async function generateMetadata({ params }: Request, parent: ResolvingMetadata): Promise<Metadata> {
   const cateringPackage: { data: TPackageDetails } = await getPackageDetails(params.packageSlug);
-  return { title: `Information | ${cateringPackage.data.name}`, description: cateringPackage.data.about };
+  return { title: `Shipping | ${cateringPackage.data.name}`, description: cateringPackage.data.about };
 }
 
 async function PackageTiersPage({ params, searchParams }: Request) {

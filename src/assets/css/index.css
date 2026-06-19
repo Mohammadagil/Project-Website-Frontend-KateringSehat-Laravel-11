@@ -18,3 +18,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .swiper-pagination .swiper-pagination-bullet {
   @apply bg-white !mx-[2px];
 }
+
+input:read-only:not([type="file"]),
+textarea:read-only {
+  @apply bg-gray3 border-none cursor-not-allowed;
+}

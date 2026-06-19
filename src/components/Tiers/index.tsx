@@ -1,12 +1,12 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { TTier } from "./types";
 import Clock from "@/assets/images/clock.svg";
 import People from "@/assets/images/people.svg";
 import Image from "next/image";
 import BadgeCheckmark from "@/assets/images/badge-checkmark.svg";
-import Link from "next/link";
+import { RouterBack } from "../Modal";
 
-export function ContentTier({ packageSlug, data, isPriceShown }: { packageSlug: string; data: TTier; isPriceShown?: boolean }) {
+export function ContentTier({ packageSlug, data, isPriceShown, cta, ctaIsBack, }: { packageSlug: string; data: TTier; isPriceShown?: boolean; cta?: ReactNode; ctaIsBack?: boolean }) {
   return (
     <div className="flex flex-col gap-y-3 h-full p-4 rounded-3xl relative border">
       <span className="flex gap-x-2 items-center">
@@ -58,9 +58,11 @@ export function ContentTier({ packageSlug, data, isPriceShown }: { packageSlug: 
           <hr />
         </>
       )}
-      <Link href={`/packages/${packageSlug}/informations?tier=${data.id}`} className="flex py-3 border border-gray1 rounded-full font-semibold justify-center hover:bg-color1 hover:text-white hover:border-transparent">
-        Choose Package
-      </Link>
+
+      {!!ctaIsBack && (<RouterBack className="flex py-3 border border-gray1 rounded-full font-semibold justify-center hover:bg-color1 hover:text-white hover:border-transparent">Close</RouterBack>)}
+      
+      {!ctaIsBack && cta}
+     
     </div>
   );
 }
