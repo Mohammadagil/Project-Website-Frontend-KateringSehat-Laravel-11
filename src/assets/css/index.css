@@ -2,6 +2,61 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Token warna desain baru, dalam format "R G B" agar bisa dipakai dengan opacity Tailwind (bg-accent/20). */
+@layer base {
+  :root {
+    --ks-surface: 255 255 255;
+    --ks-surface-soft: 245 244 239;
+    --ks-card: 255 255 255;
+    --ks-ink: 20 32 26;
+    --ks-ink-soft: 86 100 91;
+    --ks-ink-faint: 107 122 113;
+    --ks-accent: 232 84 58;
+    --ks-accent-deep: 184 58 36;
+    --ks-accent-tint: 252 231 225;
+    --ks-primary: 207 67 41;
+    --ks-on-primary: 255 255 255;
+    --ks-line: 231 228 220;
+    --ks-good: 46 125 50;
+    --ks-good-tint: 230 242 230;
+    --ks-warn: 138 90 18;
+    --ks-warn-tint: 247 236 216;
+    --ks-bad: 166 60 46;
+    --ks-bad-tint: 246 229 225;
+    --ks-leaf: 63 125 78;
+    --ks-leaf-light: 106 163 111;
+    color-scheme: light;
+  }
+
+  .dark {
+    --ks-surface: 15 21 18;
+    --ks-surface-soft: 21 29 25;
+    --ks-card: 27 36 32;
+    --ks-ink: 237 241 236;
+    --ks-ink-soft: 182 193 185;
+    --ks-ink-faint: 150 163 155;
+    --ks-accent: 240 105 79;
+    --ks-accent-deep: 255 157 136;
+    --ks-accent-tint: 59 33 27;
+    --ks-primary: 240 105 79;
+    --ks-on-primary: 26 11 7;
+    --ks-line: 43 54 49;
+    --ks-good: 134 212 147;
+    --ks-good-tint: 23 48 28;
+    --ks-warn: 241 185 100;
+    --ks-warn-tint: 51 39 15;
+    --ks-bad: 255 143 128;
+    --ks-bad-tint: 59 27 23;
+    --ks-leaf: 111 191 127;
+    --ks-leaf-light: 159 212 165;
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-surface font-sans text-ink antialiased;
+  }
+}
+
 input[type="date"]::-webkit-inner-spin-button,
 input[type="date"]::-webkit-calendar-picker-indicator {
   opacity: 0;

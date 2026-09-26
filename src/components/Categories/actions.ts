@@ -24,6 +24,7 @@ export async function getCategoryDetails(categorySlug: string) {
   }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function navigateFilterCategories(prevState: any, formData: FormData) {
   const category = formData.get("category");
   const city = formData.get("city");

@@ -1,13 +1,22 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Archivo, Bricolage_Grotesque } from "next/font/google";
 import "@/assets/css/index.css";
 import "@/libs/thousands";
 import Toaster from "@/components/Toaster";
 import NProgressBar from "@/components/NProgressBar";
+import { themeInitScript } from "@/libs/theme";
 
-const poppins = Poppins({
-  weight: ["400", "600", "700"],
+const archivo = Archivo({
   subsets: ["latin"],
+  variable: "--font-archivo",
+  display: "swap",
+});
+
+const bricolage = Bricolage_Grotesque({
+  subsets: ["latin"],
+  weight: ["500", "700", "800"],
+  variable: "--font-bricolage",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -15,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s | Katering Sehat",
     default: "Katering Sehat",
   },
-  description: "Healthy foods, asian foods, instant foods, and more",
+  description: "Katering sehat langganan — pilih paket, bayar via transfer, dan menu sehat diantar tiap hari.",
 };
 
 export default function RootLayout({
@@ -26,10 +35,13 @@ export default function RootLayout({
   modal: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={poppins.className}>
+    <html lang="id" className={`${archivo.variable} ${bricolage.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body>
         <NProgressBar>
-          <main className="container max-w-sm mx-auto flex flex-col gap-y-5 relative">{children}</main>
+          {children}
           {modal}
           <Toaster />
         </NProgressBar>

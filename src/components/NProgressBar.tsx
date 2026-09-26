@@ -11,7 +11,7 @@ function NProgressBar({ children }: Props) {
   return (
     <>
       {children}
-      <NextTopLoader color="#F97316" height={4} showSpinner={false} easing="ease" speed={200} />
+      <NextTopLoader color="#e8543a" height={3} showSpinner={false} easing="ease" speed={200} />
     </>
   );
 }
