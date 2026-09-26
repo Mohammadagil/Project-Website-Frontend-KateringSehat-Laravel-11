@@ -19,6 +19,8 @@ import BadgeCheckmark from "@/assets/images/badge-checkmark.svg";
 import Receipt from "@/assets/images/receipt.svg";
 import "@/libs/thousands";
 
+import SubmitButton from "@/components/SubmitButton";
+import TopLoaderOnPending from "@/components/TopLoaderOnPending";
 import { TPackageDetails } from "@/components/Packages/types";
 import { useLocalStorage } from "@uidotdev/usehooks";
 import { useFormState } from "react-dom";
@@ -26,7 +28,7 @@ import { submitPayment } from "@/components/Packages/actions";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { format } from "date-fns";
-import { toast } from "react-toastify/unstyled";
+import { toast } from "react-toastify";
 
 type Props = {
   data: TPackageDetails;
@@ -83,6 +85,7 @@ function Form({ data, tierId }: Props) {
 
   return (
     <form action={formAction}>
+      <TopLoaderOnPending />
       <input type="hidden" name="slug" value={data.slug} />
       <input type="hidden" name="catering_package_id" value={data.id} />
       <input type="hidden" name="catering_tier_id" value={tierId} />
@@ -390,9 +393,7 @@ function Form({ data, tierId }: Props) {
               <span className="text-gray2 text-sm">Grand Total</span>
               <span className="font-semibold text-xl">Rp {grandTotal.thousands()}</span>
             </span>
-            <button type="submit" className="bg-color1 rounded-full flex items-center justify-center text-white px-5">
-              Continue
-            </button>
+            <SubmitButton>Continue</SubmitButton>
           </div>
         </div>
       </div>

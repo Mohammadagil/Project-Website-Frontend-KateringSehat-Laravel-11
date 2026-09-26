@@ -13,6 +13,7 @@ import HomeTown from "@/assets/images/hometown.svg";
 import Map from "@/assets/images/map.svg";
 import Notes2 from "@/assets/images/notes2.svg";
 import ComposerHeader from "./ComposerHeader";
+import ResubmitProofForm from "./ResubmitProofForm";
 import Image from "next/image";
 import Notes from "@/assets/images/notes.svg";
 import People from "@/assets/images/people.svg";
@@ -40,7 +41,7 @@ async function OrdersFoundPage({ searchParams, params }: Request) {
       <ComposerHeader />
       <section className="relative px-4 -mt-20 z-10">
         <div className="flex gap-y-5 flex-col bg-white shadow-[0px_12px_30px_0px_#07041517] p-3 rounded-3xl">
-          {bookingDetails.data.isPaid === 0 && (
+          {!bookingDetails.data.isPaid && !bookingDetails.data.isRejected && (
             <span className="bg-color5 flex gap-x-3 p-3 rounded-2xl items-center">
               <span className="">
                 <Receipt />
@@ -52,7 +53,7 @@ async function OrdersFoundPage({ searchParams, params }: Request) {
             </span>
           )}
 
-          {bookingDetails.data.isPaid === 1 && (
+          {bookingDetails.data.isPaid && (
             <span className="bg-color3 text-white flex gap-x-3 p-3 rounded-2xl items-center">
               <span className="">
                 <Receipt />
@@ -60,6 +61,19 @@ async function OrdersFoundPage({ searchParams, params }: Request) {
               <span className="flex flex-col">
                 <span className="text-sm">Status Pembayaran</span>
                 <span className="font-semibold">Sukses Terbayar & Siap Antar</span>
+              </span>
+            </span>
+          )}
+
+          {bookingDetails.data.isRejected && (
+            <span className="bg-red-500 text-white flex gap-x-3 p-3 rounded-2xl items-center">
+              <span className="">
+                <Receipt />
+              </span>
+              <span className="flex flex-col">
+                <span className="text-sm">Status Pembayaran</span>
+                <span className="font-semibold">Ditolak</span>
+                {bookingDetails.data.rejectionReason && <span className="text-sm">{bookingDetails.data.rejectionReason}</span>}
               </span>
             </span>
           )}
@@ -261,7 +275,7 @@ async function OrdersFoundPage({ searchParams, params }: Request) {
                 name="post_code"
                 id="post_code"
                 placeholder="Post code"
-                defaultValue={bookingDetails.data.past_codes || ""}
+                defaultValue={bookingDetails.data.post_code || ""}
               />
               <label htmlFor="post_code" className="absolute pointer-events-none text-gray2 inset-0 flex items-center ml-12 peer-placeholder-shown:mb-0 mb-8 peer-placeholder-shown:text-base text-sm transition-all duration-300">
                 Post code
@@ -363,6 +377,8 @@ async function OrdersFoundPage({ searchParams, params }: Request) {
             </span>
           </div>
         </div>
+
+        {bookingDetails.data.isRejected && <ResubmitProofForm bookingTrxId={bookingDetails.data.booking_trx_id} phone={bookingDetails.data.phone} />}
 
         <div className="sticky bottom-4 z-50 mb-8">
           <a href="" className="bg-color1 text-White rounded-full flex items-center justify-center px-5 w-full py-3">

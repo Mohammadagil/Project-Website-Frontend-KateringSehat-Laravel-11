@@ -38,7 +38,7 @@ export type TBookingDetails = {
   name: string;
   email: string;
   phone: string;
-  past_codes: null;
+  post_code: string;
   city: string;
   address: string;
   notes: string;
@@ -51,7 +51,9 @@ export type TBookingDetails = {
   delivery_time: string;
   quantity: number;
   duration: number;
-  isPaid: 0 | 1;
+  isPaid: boolean;
+  isRejected: boolean;
+  rejectionReason: string | null;
   proof: string;
   cateringPackage: TPackage;
   cateringTier: TTier;

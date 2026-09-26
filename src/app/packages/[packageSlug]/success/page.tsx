@@ -61,7 +61,7 @@ async function BookingSuccessPage({ params, searchParams }: Request) {
         <p className="px-4 text-center text-gray2">Gunakan kode booking di atas untuk memeriksa status pemesanan</p>
 
         <div className="flex flex-col gap-y-4">
-          <Link href="/bookings" className="bg-color1 text-white rounded-full inline-flex items-center justify-center px-5 py-3">
+          <Link href={`/orders/${searchParams["trx-id"]}?phone=${searchParams.phone}`} className="bg-color1 text-white rounded-full inline-flex items-center justify-center px-5 py-3">
             View My Booking
           </Link>
 

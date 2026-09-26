@@ -156,6 +156,13 @@ export async function submitPayment(prevState: any, formData: FormData) {
     });
     const data = await res.json();
 
+    if (!res.ok) {
+      return {
+        message: data.message || "Failed to submit booking",
+        field: "toaster",
+      };
+    }
+
     return {
       message: "Next Step",
       field: "",
@@ -188,6 +195,45 @@ export async function checkBookingByTrxId(booking_trx_id: string, phone: string)
     return res.json();
   } catch (error) {
     return error;
+  }
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function submitResubmitProof(prevState: any, formData: FormData) {
+  const proof = formData.get("proof") as File;
+
+  if (proof.size === 0) {
+    return {
+      message: "Proof of payment is required",
+      field: "proof",
+    };
+  }
+
+  try {
+    const res = await fetch(`${process.env.HOST_API}/api/resubmit-proof`, {
+      method: "POST",
+      body: formData,
+    });
+    const data = await res.json();
+
+    if (!res.ok) {
+      return {
+        message: data.message || "Failed to resubmit proof of payment",
+        field: "toaster",
+      };
+    }
+
+    return {
+      message: "Proof of payment resubmitted",
+      field: "",
+      data,
+    };
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (error: any) {
+    return {
+      message: error.message,
+      field: "toaster",
+    };
   }
 }
 
