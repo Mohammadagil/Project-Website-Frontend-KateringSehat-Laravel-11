@@ -5,7 +5,7 @@ import { cn } from "@/libs/cn";
 type Variant = "primary" | "secondary" | "ghost" | "danger";
 type Size = "sm" | "md" | "lg";
 
-type StyleProps = {
+export type StyleProps = {
   variant?: Variant;
   size?: Size;
   block?: boolean;

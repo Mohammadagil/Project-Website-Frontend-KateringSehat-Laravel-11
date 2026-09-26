@@ -5,6 +5,8 @@ import Button, { ButtonLink } from "@/components/ui/Button";
 import { Field, Input, Textarea } from "@/components/ui/Field";
 import Card from "@/components/ui/Card";
 import Badge from "@/components/ui/Badge";
+import { getSessionUser } from "@/libs/session";
+import { logoutAction } from "@/components/Auth/actions";
 
 // Halaman sementara untuk mengecek fondasi desain (CP1). Dihapus di CP9.
 export const metadata: Metadata = {
@@ -28,6 +30,8 @@ const swatches = [
 ];
 
 export default function UiPreviewPage() {
+  const user = getSessionUser();
+
   return (
     <main className="mx-auto flex max-w-5xl flex-col gap-8 px-4 py-8 md:px-8">
       <header className="flex items-center justify-between gap-4">
@@ -39,6 +43,36 @@ export default function UiPreviewPage() {
         <h1 className="font-display text-3xl font-extrabold md:text-4xl">Pratinjau fondasi desain</h1>
         <p className="text-ink-soft">Tekan tombol bulan/matahari di kanan atas untuk mencoba mode gelap.</p>
       </section>
+
+       <Card className="flex flex-wrap items-center justify-between gap-4 p-6">
+        {user ? (
+          <>
+            <div>
+              <p className="text-sm text-ink-soft">Masuk sebagai</p>
+              <p className="font-bold">
+                {user.name} · {user.email}
+              </p>
+            </div>
+            <form action={logoutAction}>
+              <Button type="submit" variant="danger" size="sm">
+                Keluar
+              </Button>
+            </form>
+          </>
+        ) : (
+          <>
+            <p className="text-ink-soft">Belum masuk.</p>
+            <div className="flex gap-2">
+              <ButtonLink href="/login?next=/ui-preview" size="sm">
+                Masuk
+              </ButtonLink>
+              <ButtonLink href="/register?next=/ui-preview" variant="secondary" size="sm">
+                Daftar
+              </ButtonLink>
+            </div>
+          </>
+        )}
+      </Card>
 
       <Card className="flex flex-wrap items-end gap-6 p-6">
         <LogoMark className="h-20 w-20" />

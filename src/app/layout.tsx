@@ -3,6 +3,7 @@ import { Archivo, Bricolage_Grotesque } from "next/font/google";
 import "@/assets/css/index.css";
 import "@/libs/thousands";
 import Toaster from "@/components/Toaster";
+import FlashToast from "@/components/FlashToast";
 import NProgressBar from "@/components/NProgressBar";
 import { themeInitScript } from "@/libs/theme";
 
@@ -44,6 +45,7 @@ export default function RootLayout({
           {children}
           {modal}
           <Toaster />
+          <FlashToast />
         </NProgressBar>
       </body>
     </html>
