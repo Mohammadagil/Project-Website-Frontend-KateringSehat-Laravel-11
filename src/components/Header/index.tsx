@@ -1,7 +1,7 @@
 "use client";
 
 import ArrowCircleLeft from "@/assets/images/arrow-circle-left.svg";
-import ThumbsUp from "@/assets/images/thumbsUp.svg";
+import ThumbsUp from "@/assets/images/thumbsup.svg";
 import Dots4 from "@/assets/images/dots4.svg";
 import React, { MouseEventHandler } from "react";
 import Link from "next/link";

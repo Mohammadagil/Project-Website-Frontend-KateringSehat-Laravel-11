@@ -5,7 +5,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Form from "./Form";
 
-export const metaData: Metadata = {
+export const metadata: Metadata = {
   title: "Orders",
 };
 
