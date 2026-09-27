@@ -29,7 +29,7 @@ export default function Logo({ className, markClassName = "h-8 w-8", textClassNa
   return (
     <span className={cn("inline-flex items-center gap-2.5", className)}>
       <LogoMark className={markClassName} shineClassName={shineClassName} />
-      <span className={cn("font-display font-bold tracking-tight text-ink", textClassName)}>katering sehat</span>
+      <span className={cn("translate-y-[0.20em] font-display font-bold tracking-tight text-ink", textClassName)}>katering sehat</span>
     </span>
   );
 }

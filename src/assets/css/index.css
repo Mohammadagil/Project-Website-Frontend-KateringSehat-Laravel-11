@@ -55,6 +55,13 @@
   body {
     @apply bg-surface font-sans text-ink antialiased;
   }
+
+  /* Link ke #bagian (Kategori, Paket Terbaru, ...) bergulir halus, kecuali pengguna memilih kurangi animasi. */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
 }
 
 input[type="date"]::-webkit-inner-spin-button,
