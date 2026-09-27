@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import Logo, { LogoMark } from "@/components/ui/Logo";
-import ThemeToggle from "@/components/ui/ThemeToggle";
 import Button, { ButtonLink } from "@/components/ui/Button";
 import { Field, Input, Textarea } from "@/components/ui/Field";
 import Card from "@/components/ui/Card";
@@ -33,11 +32,7 @@ export default function UiPreviewPage() {
   const user = getSessionUser();
 
   return (
-    <main className="mx-auto flex max-w-5xl flex-col gap-8 px-4 py-8 md:px-8">
-      <header className="flex items-center justify-between gap-4">
-        <Logo />
-        <ThemeToggle />
-      </header>
+    <div className="mx-auto flex max-w-5xl flex-col gap-8 px-4 py-8 md:px-8">
 
       <section className="flex flex-col gap-2">
         <h1 className="font-display text-3xl font-extrabold md:text-4xl">Pratinjau fondasi desain</h1>
@@ -120,6 +115,6 @@ export default function UiPreviewPage() {
           <Textarea id="demo-notes" rows={3} />
         </Field>
       </Card>
-    </main>
+    </div>
   );
 }
