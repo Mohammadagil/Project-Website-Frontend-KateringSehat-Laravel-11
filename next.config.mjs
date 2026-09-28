@@ -11,6 +11,13 @@ const nextConfig = {
     return config;
   },
   
+  experimental: {
+    serverActions: {
+      // Batas bawaan Server Action 1 MB, padahal bukti bayar boleh sampai 2 MB (aturan backend).
+      bodySizeLimit: "3mb",
+    },
+  },
+
   images: {
     remotePatterns: [
       {

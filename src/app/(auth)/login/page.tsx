@@ -6,7 +6,7 @@ import LoginForm from "./LoginForm";
 
 export const metadata: Metadata = { title: "Masuk" };
 
-type Props = { searchParams: { next?: string; reset?: string } };
+type Props = { searchParams: { next?: string; reset?: string; expired?: string } };
 
 export default function LoginPage({ searchParams }: Props) {
   const next = searchParams.next ?? "";
@@ -20,6 +20,7 @@ export default function LoginPage({ searchParams }: Props) {
       </div>
 
       {searchParams.reset && <FormAlert variant="success">Password berhasil diubah. Silakan masuk dengan password baru.</FormAlert>}
+      {searchParams.expired && <FormAlert>Sesi kamu sudah berakhir. Silakan masuk lagi untuk melanjutkan.</FormAlert>}
 
       <LoginForm next={next} />
 

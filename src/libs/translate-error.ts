@@ -11,6 +11,13 @@ const rules: Array<[RegExp, string | ((m: RegExpMatchArray) => string)]> = [
   [/reset token is invalid/i, "Link reset sudah tidak berlaku. Minta link baru."],
   [/can't find a user with that email/i, "Email tidak terdaftar."],
   [/please wait before retrying/i, "Tunggu sebentar sebelum mencoba lagi."],
+  [/must be a file of type/i, "Format file harus JPG atau PNG."],
+  [/must not be greater than 2048 kilobytes/i, "Ukuran file maksimal 2 MB."],
+  [/must be a valid date/i, "Tanggal tidak valid."],
+  [/already have an active booking/i, "Kamu sudah punya pesanan paket & tier ini di rentang tanggal yang sama. Pilih tanggal mulai lain."],
+  [/tier package not found/i, "Tier yang dipilih sudah tidak tersedia. Pilih tier lain."],
+  [/catering package not found/i, "Paket sudah tidak tersedia."],
+  [/booking not found/i, "Pesanan tidak ditemukan."],
 ];
 
 export function translateError(message: string): string {
