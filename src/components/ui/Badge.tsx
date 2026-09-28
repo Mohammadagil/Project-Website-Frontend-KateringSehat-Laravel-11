@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { cn } from "@/libs/cn";
 
-export type TBadgeVariant = "neutral" | "accent" | "pending" | "approved" | "rejected";
+export type TBadgeVariant = "neutral" | "accent" | "pending" | "approved" | "rejected" | "rejected-on-tint";
 
 const variants: Record<TBadgeVariant, string> = {
   neutral: "bg-surface-soft text-ink-soft",
@@ -9,6 +9,8 @@ const variants: Record<TBadgeVariant, string> = {
   pending: "bg-warn-tint text-warn",
   approved: "bg-good-tint text-good",
   rejected: "bg-bad-tint text-bad",
+  // Untuk badge "Ditolak" di atas latar merah muda (bad-tint), supaya tidak menyatu dengan latarnya.
+  "rejected-on-tint": "bg-card text-bad ring-1 ring-bad/30",
 };
 
 export default function Badge({ variant = "neutral", className, children }: { variant?: TBadgeVariant; className?: string; children: ReactNode }) {

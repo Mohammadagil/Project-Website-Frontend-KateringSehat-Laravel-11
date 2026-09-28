@@ -18,6 +18,7 @@ const rules: Array<[RegExp, string | ((m: RegExpMatchArray) => string)]> = [
   [/tier package not found/i, "Tier yang dipilih sudah tidak tersedia. Pilih tier lain."],
   [/catering package not found/i, "Paket sudah tidak tersedia."],
   [/booking not found/i, "Pesanan tidak ditemukan."],
+  [/not in a rejected state/i, "Pesanan ini tidak sedang ditolak, jadi bukti bayar tidak perlu dikirim ulang."],
 ];
 
 export function translateError(message: string): string {
