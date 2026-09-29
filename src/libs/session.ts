@@ -25,6 +25,9 @@ export function getToken(): string | null {
 }
 
 export function getSessionUser(): TSessionUser | null {
+  // Tanpa token berarti tidak login, walaupun cookie data user masih tersisa.
+  // Menjaga header (yang membaca cookie ini) tetap sepakat dengan middleware (yang membaca cookie token).
+  if (!getToken()) return null;
   const raw = cookies().get(USER_COOKIE)?.value;
   if (!raw) return null;
   try {
@@ -39,6 +42,11 @@ export function getSessionUser(): TSessionUser | null {
 export function setSession(token: string, user: TSessionUser) {
   cookies().set(TOKEN_COOKIE, token, cookieOptions);
   cookies().set(USER_COOKIE, JSON.stringify(user), cookieOptions);
+}
+
+// Setelah profil diubah: perbarui data user di cookie supaya nama di header ikut berubah.
+export function updateSessionUser(user: TSessionUser) {
+  cookies().set(USER_COOKIE, JSON.stringify({ id: user.id, name: user.name, email: user.email, phone: user.phone }), cookieOptions);
 }
 
 export function clearSession() {
